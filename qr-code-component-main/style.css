@@ -1,44 +1,66 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    background: hsl(212, 45%, 89%);
-    width: 100vw;
-    height: 100vh;
+  background: hsl(212, 45%, 89%);
+  min-width: 100vw;
+  min-height: 100vh;
+}
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  img { 
-    display: block;
-    width: 100%;
-    border-radius: 15px;
-  }
-  h2, 
-  p, 
-  .attribution {
-    text-align: center;
-  }
+img { 
+  display: block;
+  width: 100%;
+  border-radius: 15px;
+}
 
-  p { 
-    font-size: 15px; 
-    text-align: center; 
-    color: hsl(220, 15%, 55%); 
-    letter-spacing: 1px;
-  }
-  .attribution a { color: hsl(228, 45%, 44%); }
+h1, 
+p, 
+footer {
+  text-align: center;
+}
 
-  .card {
-    background: white;
-    width: 325px;
-    padding: 1em;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .card-content {
-    padding: 0em 1.75em;
-  }
+h1 {
+  margin-bottom: .75em;
+}
+
+p { 
+  font-size: 15px; 
+  text-align: center; 
+  color: hsl(220, 15%, 55%); 
+  letter-spacing: 1px;
+}
+
+a { 
+  color: hsl(228, 45%, 44%); 
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: white;
+  width: 300px;
+  padding: 2em 1.75em;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-content {
+  padding: 1em .5em;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 
 @media (min-width: 375px ) {
     .card {
