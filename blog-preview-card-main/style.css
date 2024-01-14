@@ -83,6 +83,7 @@ textarea:not([rows]) {
 
 body {
     background: var(--clr-yellow);
+    font-family: var(--font-family);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -92,25 +93,62 @@ body {
 
 .card {
     background: var(--clr-white);
-    width: 20em;
+    width: 23.44em;
     border: 1px solid var(--clr-black);
     border-radius: 1em;
-    padding: 1em;
+    padding: 1.25em;
     margin-top: auto;
+    -webkit-box-shadow: 7px 7px 0px -1px rgba(0,0,0,1);
+    -moz-box-shadow: 7px 7px 0px -1px rgba(0,0,0,1);
+    box-shadow: 7px 7px 0px -1px rgba(0,0,0,1);
 }
 
 .card-image {
     width: 100%;
     border-radius: 1em;
+    margin-bottom: 1.25em;
 }
 
-.card-info > * {
-    padding: .5em 0;
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 1em;
+}
+
+.card-title {
+    font-size: 1.5rem;
+}
+
+.card-date {
+    order: -1;
 }
 
 .card-category {
     background: var(--clr-yellow);
-    width: 1.25em;
+    font-weight: var(--font-weight-bold);
+    width: fit-content;
+    padding: .25em .9em;
+    border-radius: 5px;
+    order: -2;
+}
+
+.card-description {
+    color: var(--clr-grey);
+}
+
+.author-container {
+    display: flex;
+    align-items: center;
+    gap: .85em;
+}
+
+.card-author-img {
+    width: 35px;
+}
+
+.card-author {
+    font-weight: var(--font-weight-bold);
 }
 
 footer {
