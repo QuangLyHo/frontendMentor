@@ -71,18 +71,12 @@ textarea:not([rows]) {
 :root {
     --clr-light-theme: hsl(230, 22%, 74%);
     --clr-toggle-btn: hsl(230, 22%, 74%);
-    
-    --clr-light-bg: hsl(0, 0%, 100%);
-    --clr-light-bg-top: hsl(225, 100%, 98%);
-    --clr-light-bg-card: hsl(227, 47%, 96%);
-    --clr-light-bg-gray-text: hsl(228, 12%, 44%);
-    --clr-light-bg-blue-text: hsl(230, 17%, 14%);
 
-    --clr-dark-bg: hsl(230, 17%, 14%);
-    --clr-dark-bg-top: hsl(232, 19%, 15%);
-    --clr-dark-bg-card: hsl(228, 28%, 20%);
-    --clr-dark-bg-blue-text: hsl(228, 34%, 66%);
-    --clr-dark-bg-white-text: hsl(0, 0%, 100%);
+    --clr-bg-color: hsl(0, 0%, 100%);
+    --clr-header: hsl(225, 100%, 98%);
+    --clr-cardBG: hsl(227, 47%, 96%); 
+    --clr-text: hsl(228, 12%, 44%);
+    --clr-text-accent: hsl(230, 17%, 14%);
 
     --clr-limegrn: hsl(163, 72%, 41%);
     --clr-red: hsl(356, 69%, 56%);
@@ -93,17 +87,24 @@ textarea:not([rows]) {
 
     --font-family: 'Inter', sans-serif;
     --font-weight-bold: 700;
+
+    --hover-opacity: brightness(90%);
+}
+
+:root.dark {
+    --clr-bg-color: hsl(230, 17%, 14%);
+    --clr-header: hsl(232, 19%, 15%);
+    --clr-cardBG: hsl(228, 28%, 20%); 
+    --clr-text: hsl(228, 34%, 66%);
+    --clr-text-accent: hsl(0, 0%, 100%);
+
+    --hover-opacity: brightness(120%);
 }
 
 body {
-    background: linear-gradient(to bottom,
-        hsl(225, 100%, 98%) 0%,
-        hsl(225, 100%, 98%) 10%,
-        hsl(0, 0%, 100%) 10%,
-        hsl(0, 0%, 100%) 100%
-    );
+    background: var(--clr-bg-color);
     font-family: var(--font-family);
-    color: var(--clr-light-bg-gray-text);
+    color: var(--clr-text);
     font-size: .875rem;
     display: flex;
     flex-direction: column;
@@ -113,13 +114,17 @@ body {
 
 main,
 header {
-    max-width: 1000px;
     width: 100%;
+    height: 100%;
     padding: 2em;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
     gap: 1em;
+}
+
+header {
+    background: var(--clr-header);
 }
 
 .flex {
@@ -129,8 +134,13 @@ header {
     align-items: center;
 }
 
+.title,
+p.social-total,
+.overview-card-views {
+    color: var(--clr-text-accent);
+}
+
 .title {
-    color: black;
     font-size: 1.25rem;
 }
 
@@ -138,10 +148,14 @@ header {
     margin-left: .25em;
 }
 
+p.social-total,
+.overview-card-views {
+    font-weight: var(--font-weight-bold);
+}
+
+
 p.social-total {
     font-size: 3rem;
-    color: black;
-    font-weight: var(--font-weight-bold);
 }
 
 p.social-followers {
@@ -157,6 +171,10 @@ p.red {
     color: var(--clr-red);
 }
 
+.overview-card-views {
+    font-size: 2.25rem;
+}
+
 /* dark mode toggler */
 
 .header-toggle {
@@ -167,7 +185,7 @@ p.red {
     align-items: center;
     margin-bottom: 1em;
     margin-top: 1em;
-    border-top: 1px solid var(--clr-dark-bg-blue-text);
+    border-top: 1px solid var(--clr-text-accent);
     gap: 1em;
 }
 
@@ -191,7 +209,12 @@ p.red {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--clr-toggle-btn);
+    background: linear-gradient(
+        to left,
+        hsl(210, 78%, 56%),
+        hsl(146, 68%, 55%)
+    );
+    background: var(--clr-toggle-btn);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -209,7 +232,11 @@ p.red {
 }
 
 input:checked + .slider {
-    background-color: var(--clr-toggle-btn);
+    background: linear-gradient(
+        to left, 
+        hsl(210, 78%, 56%), 
+        hsl(146, 68%, 55%)
+    );
 }
   
 input:focus + .slider {
@@ -232,15 +259,17 @@ input:checked + .slider:before {
 
 /* Social medias */
 .social {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--clr-light-bg-card);
+    display: grid;
+    justify-items: center;
+    align-content: center;
+}
+
+.social,
+.overview-card {
+    background: var(--clr-cardBG);
     border-radius: 7px;
     margin: 1em 0;
-    padding: 2em;
-    align-self: center;
+    padding: 2em 2.5em;
     cursor: pointer;
 }
 
@@ -270,17 +299,12 @@ input:checked + .slider:before {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
 
-    background-color: var(--clr-light-bg-card);
-    border-radius: 7px;
-    padding: 1em 2.5em;
-    gap: 1.5em;
-    margin: .5em 0;
-    cursor: pointer;
+    background-color: var(--clr-cardBG);
 }
 
 .overview-card:hover,
 .social:hover {
-    filter: brightness(95%);
+    filter: var(--hover-opacity);
 }
 
 .overview-card-title,
@@ -294,28 +318,15 @@ input:checked + .slider:before {
     justify-self: end;
 }
 
-.overview-card-views {
-    font-size: 2.25rem;
-    font-weight:var(--font-weight-bold);
-    color: black;
-}
-
 footer {
     text-align: center;
     margin-top: auto;
     width: 100%;
+    background: var(--clr-bg-color);
+    height: 5vh;
 }
 
 @media (min-width: 400px) {
-    body {
-        background: linear-gradient(to bottom,
-            hsl(225, 100%, 98%) 0%,
-            hsl(225, 100%, 98%) 20%,
-            hsl(0, 0%, 100%) 20%,
-            hsl(0, 0%, 100%) 100%
-        );
-    }
-
     header {
         display: flex;
         flex-direction: row;
