@@ -163,7 +163,8 @@ p.social-followers {
     letter-spacing: 3px;
 }
 
-p.social-today {
+p.social-today,
+.lime-text {
     color: var(--clr-limegrn);
 }
 
