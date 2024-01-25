@@ -102,7 +102,7 @@ main {
 } */
 
 .container {
-  margin: 0 auto;
+  max-width: 715px;
   padding: 1em 1em;
 }
 
